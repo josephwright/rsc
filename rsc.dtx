@@ -100,7 +100,7 @@ This work consists of the file  rsc.dtx
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{rsc}
-  [2009/05/06 v3.1a Support for RSC and Wiley journals]
+  [2009/07/07 v3.1b Support for RSC and Wiley journals]
 %</package>
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -1269,8 +1269,8 @@ FUNCTION {format.editors}
 FUNCTION {format.doi}
 { use.doi.all
     { doi empty$
-        { bbl.doi doi tie.or.space.connect output }
         'skip$
+        { bbl.doi doi tie.or.space.connect output }
       if$
     }
     'skip$
