@@ -93,14 +93,11 @@ This work consists of the file  rsc.dtx
 \else
   \expandafter\endgroup
 \fi
-\immediate\write18{bibtex8 --wolfgang rsc}
-\immediate\write18{makeindex -s gglo.ist -o rsc.gls rsc.glo}
-\immediate\write18{makeindex -s gind.ist -o rsc.ind rsc.idx}
 %</internal>
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{rsc}
-  [2009/07/07 v3.1b Support for RSC and Wiley journals]
+  [2009/10/16 v3.1c Support for RSC and Wiley journals]
 %</package>
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -118,8 +115,6 @@ This work consists of the file  rsc.dtx
 \end{document}
 %</driver>
 % \fi
-%
-%\CheckSum{84}
 %
 %\GetFileInfo{\jobname.sty}
 %
@@ -1745,21 +1740,17 @@ FUNCTION {inbook}
 FUNCTION {incollection}
 { output.bibitem
   author empty$
-    { booktitle
-%<rsc>      format.title
-%<angew>      format.title.vol
-      "booktitle" output.check
+%<rsc>    { booktitle format.title "booktitle" output.check
+%<angew>    { booktitle format.title.vol "booktitle" output.check
       editor empty$
-        { "Need at least an author or an editor for "
-          cite$ * warning$ }
-        { "" format.editors * "editor" output.check }
-      if$
+      { "Need at least an author or an editor for "
+        cite$ * warning$ }
+      { "" format.editors * "editor" output.check }
+    if$
     }
     { format.authors output
-      booktitle
-%<rsc>      format.title
-%<angew>      format.title.vol
-      "booktitle" output.check
+%<rsc>      booktitle format.title.in "booktitle" output.check
+%<angew>      booktitle format.title.vol.in "booktitle" output.check
     }
   if$
   format.pub.address "publisher" output.check
