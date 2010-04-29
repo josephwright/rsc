@@ -1,121 +1,13 @@
 % \iffalse meta-comment
-%
-% Copyright (C) 2006-2008 by
-%    Joseph Wright <joseph.wright@morningstar2.co.uk>
-%
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either
-% version 1.3c of this license or (at your option) any later
-% version. The latest version of this license is in
-%    http://www.latex-project.org/lppl.txt
-% and version 1.3c or later is part of all distributions of
-% LaTeX version 2005/12/01 or later.
-%
-% This work has the LPPL maintenance status `maintained'.
-%
-% The current maintainer of this work is Joseph Wright.
-%
-% This work consists of the source file rsc.dtx
-%                 and the derived files rsc.ins,
-%                                       rsc.sty,
-%                                       rsc.bst,
-%                                       angew.bst,
-%                                       jawltxdoc.sty,
-%                                       rsc-manual.pdf and
-%                                       rsc.pdf
-%
-% TDS-ready files:
-%    The compressed file rsc.tds.zip contains an unpacked version of
-%    all of the files included here, and pre-compiled documentation
-%    in PDF format.  Simply decompress rsc.tds.dtx in your local TeX
-%    directory, run your hash program (texhash, initexmf
-%    --update-fndb, etc.) and everything will be ready to go.  The
-%    user documentation for the package is called rsc-manual.pdf; the
-%    file rsc.pdf includes the user manual and the full source code.
-%
-% Unpacking:
-%    (a) If rsc.ins is present:
-%           tex rsc.ins
-%    (b) Without rsc.ins:
-%           tex rsc.dtx
-%    (c) If you use LaTeX to generate files:
-%           latex \let\install=y\input{rsc.dtx}
-%
-% Documentation:
-%    (a) Without write18 enabled:
-%          pdflatex rsc.dtx
-%          bibtex8 --wolfgang rsc
-%          makeindex -s gind.ist rsc.idx
-%          makeindex -s gglo.ist -o rsc.gls rsc.glo
-%          pdflatex rsc.dtx
-%          pdflatex rsc.dtx
-%    (b) With write18 enabled:
-%          pdflatex rsc.dtx
-%          pdflatex rsc.dtx
-%          pdflatex rsc.dtx
-%
-% Installation:
-%     Copy rsc.sty and the two .bst files to a location searched by
-%     TeX, and if required by your TeX installation, run the
-%     appropriate command to build a hash of files (texhash, initexmf
-%     --update-fndb, etc.)
-%
-% Note:
-%     The jawltxdoc.sty file is not needed for installation, only for
-%     building the documentation; it may be deleted after producing
-%     the documentation (if necessary).
-%
-%<*ignore>
-% This is all taken verbatim from Heiko Oberdiek's packages
-\begingroup
-  \def\x{LaTeX2e}%
-\expandafter\endgroup
-\ifcase 0\ifx\install y1\fi\expandafter
-         \ifx\csname processbatchFile\endcsname\relax\else1\fi
-         \ifx\fmtname\x\else 1\fi\relax
-\else\csname fi\endcsname
-%</ignore>
-%<*install>
-\input docstrip.tex
-\keepsilent
-\askforoverwritefalse
-\preamble
- ----------------------------------------------------------------
- The rsc package --- BibTeX styles for Royal Society of Chemistry
- and Wiley journals
- Maintained by Joseph Wright
- E-mail: joseph.wright@morningstar2.co.uk
- Released under the LaTeX Project Public License v1.3c or later
- See http://www.latex-project.org/lppl.txt
- ----------------------------------------------------------------
-
-\endpreamble
-\Msg{Generating rsc files:}
-\generate{\file{jawltxdoc.sty}{\from{\jobname.dtx}{jawltxdoc}}
-}
-\usedir{tex/latex/rsc}
-\generate{\file{\jobname.sty}{\from{\jobname.dtx}{package}}
-}
-\usedir{source/latex/rsc}
-\generate{\file{\jobname.ins}{\from{\jobname.dtx}{install}}
-}
-\nopostamble
-\usedir{bibtex/bst/rsc}
-\generate{\file{rsc.bst}{\from{rsc.dtx}{bib,rsc}}
-          \file{angew.bst}{\from{rsc.dtx}{bib,angew}}
-}
-\nopreamble\nopostamble
-\usedir{doc/latex/rsc}
-\generate{\file{README.txt}{\from{\jobname.dtx}{readme}}
-          \file{\jobname.bib}{\from{\jobname.dtx}{refs}}
-}
-\endbatchfile
-%</install>
+% !TEX program  = pdflatex
+% !TEX encoding = ISO-8859-1
+%<*internal>
+\iffalse
+%</internal>
 %<*readme>
 ----------------------------------------------------------------
-The rsc package --- BibTeX styles for Royal Society of Chemistry
-and Wiley journals
-Maintained by Joseph Wright
+rsc --- BibTeX styles for Royal Society of Chemistry and Wiley 
+  journals
 E-mail: joseph.wright@morningstar2.co.uk
 Released under the LaTeX Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
@@ -124,78 +16,252 @@ See http://www.latex-project.org/lppl.txt
 The rsc package provides BibTeX style files to produce
 bibliographies in accordance with the guidelines of the Royal
 Society of Chemistry and Wiley chemistry-related journals. The
-styles require the use of natbib and mciteplus.  In addition, a
-short LaTeX package is included; this provides a convenient
-user interface to the customisation hooks made available by the
-BibTeX styles.
+styles require the use of natbib.  In addition, a short LaTeX 
+package is included; this provides a convenient user interface to 
+the customisation hooks made available by the BibTeX styles.
 %</readme>
-%<*ignore>
+%<*internal>
 \fi
-% Will Robertson's trick
-\immediate\write18{bibtex8 --wolfgang \jobname}
-\immediate\write18{makeindex -s gglo.ist -o \jobname.gls  \jobname.glo}
-\immediate\write18{makeindex -s gglo.ist -o \jobname.gls  \jobname.glo}
-%</ignore>
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+----------------------------------------------------------------
+rsc --- BibTeX styles for Royal Society of Chemistry and Wiley 
+  journals
+E-mail: joseph.wright@morningstar2.co.uk
+Released under the LaTeX Project Public License v1.3c or later
+See http://www.latex-project.org/lppl.txt
+----------------------------------------------------------------
+
+\endpreamble
+\postamble
+
+Copyright (C) 2006-2009 by
+  Joseph Wright <joseph.wright@morningstar2.co.uk>
+  
+It may be distributed and/or modified under the conditions of
+the LaTeX Project Public License (LPPL), either version 1.3c of
+this license or (at your option) any later version.  The latest
+version of this license is in the file:
+
+   http://www.latex-project.org/lppl.txt
+
+This work is "maintained" (as per LPPL maintenance status) by
+  Joseph Wright.
+
+This work consists of the file  rsc.dtx
+          and the derived files rsc.pdf,                                
+                                rsc.ins,
+                                rsc.sty,
+                                rsc.bib and
+                                rsc-demo.tex.
+
+                                
+\endpostamble
+\usedir{tex/latex/rsc}
+\generate{
+  \file{\jobname.sty}{\from{\jobname.dtx}{package}}
+}
+\usedir{bibtex/bst/achemso}
+\generate{
+  \file{rsc.bst}{\from{\jobname.dtx}{bst,rsc}}
+  \file{angew.bst}{\from{\jobname.dtx}{bst,angew}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/rsc}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/rsc}
+\generate{
+  \file{README.txt}{\from{\jobname.dtx}{readme}}
+  \file{rsc-demo.tex}{\from{\jobname.dtx}{demo}}
+  \file{rsc.bib}{\from{\jobname.dtx}{bib}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+\immediate\write18{bibtex8 --wolfgang rsc}
+\immediate\write18{makeindex -s gglo.ist -o rsc.gls rsc.glo}
+\immediate\write18{makeindex -s gind.ist -o rsc.ind rsc.idx}
+%</internal>
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rsc}
+  [2009/04/24 v3.1 Support for RSC and Wiley journals]
+%</package>
 %<*driver>
-\PassOptionsToClass{a4paper}{article}
-\documentclass[german,english,UKenglish]{ltxdoc}
+\documentclass[a4paper]{ltxdoc}
+\usepackage[T1]{fontenc}
+\usepackage{array,booktabs,lmodern,rsc}
+\usepackage[osf]{mathpazo}
+\usepackage[scaled=0.95]{helvet}
+\usepackage[final]{listings,microtype}
+\usepackage[numbered]{hypdoc}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
-%\OnlyDescription
-\usepackage{jawltxdoc}
 \begin{document}
   \DocInput{\jobname.dtx}
 \end{document}
 %</driver>
 % \fi
 %
-%\CheckSum{118}
-%
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
+%\CheckSum{86}
 %
 %\GetFileInfo{\jobname.sty}
 %
-%\changes{v1.0}{2006/11/08}{Initial release of packaged
-%  \file{rsc.bst}}
-%\changes{v2.0}{2007/07/21}{First re-write of package}
-%\changes{v3.0}{2008/07/20}{Second re-write of package}
+%\makeatletter
 %
-%\setkeys{lst}{language=[LaTeX]{TeX},moretexcs={citet,
-%  citeyear,citeauthor}}
+%^^A \DescribeOption is in l3doc but not ltxdoc
+%\newcommand*{\DescribeOption}{^^A
+%  \leavevmode
+%  \@bsphack
+%  \begingroup
+%    \MakePrivateLetters
+%    \Describe@Option
+%}
+%\newcommand*{\Describe@Option}[1]{^^A
+%    \endgroup
+%  \marginpar{^^A
+%    \raggedleft
+%    \PrintDescribeEnv{#1}^^A
+%  }%
+%  \SpecialOptionIndex{#1}^^A
+%  \@esphack
+%  \ignorespaces
+%}
+%\newcommand*{\SpecialOptionIndex}[1]{^^A
+%  \@bsphack
+%  \index{^^A
+%    #1\actualchar{\protect\ttfamily#1} (option)\encapchar usage^^A
+%  }^^A
+%  \index{^^A
+%    options:\levelchar#1\actualchar{\protect\ttfamily#1}
+%    \encapchar usage^^A
+%  }^^A
+%  \@esphack
+%}
 %
-%\title{\currpkg\ --- \texorpdfstring{\BibTeX}{BibTeX} styles for
-%  Royal Society of Chemistry and Wiley journals^^A
-%  \thanks{This file describes version \fileversion, last revised
-%    \filedate.}}
-%\author{Joseph Wright^^A
-%  \thanks{E-mail: joseph.wright@morningstar2.co.uk}}
+%^^A For creating examples with nice highlighting of code, and so
+%^^A on; based on the system used in the listings source (lstsample).
+%\lst@RequireAspects{writefile}
+%\newsavebox{\LaTeXdemo@box}
+%\lstnewenvironment{LaTeXdemo}[1][code and example]{^^A
+%  \global\let\lst@intname\@empty
+%  \expandafter\let\expandafter\LaTeXdemo@end
+%    \csname LaTeXdemo@#1@end\endcsname
+%  \@nameuse{LaTeXdemo@#1}^^A
+%}{^^A
+%  \LaTeXdemo@end
+%}
+%\newcommand*\LaTeXdemo@new[3]{^^A
+%  \expandafter\newcommand\expandafter*\expandafter
+%    {\csname LaTeXdemo@#1\endcsname}{#2}^^A
+%  \expandafter\newcommand\expandafter*\expandafter
+%    {\csname LaTeXdemo@#1@end\endcsname}{#3}^^A
+%}
+%\newcommand*\LaTeXdemo@common{^^A
+%  \setkeys{lst}{
+%    basicstyle   = \small\ttfamily,
+%    basewidth    = 0.51em,
+%    gobble       = 3,
+%    keywordstyle = \color{blue},
+%    language     = [LaTeX]{TeX},
+%    moretexcs    = {
+%    }
+%  }^^A 
+%}
+%\newcommand*\LaTeXdemo@input{^^A
+%  \MakePercentComment
+%  \catcode`\^^M=10\relax
+%  \small
+%  \begingroup
+%    \setkeys{lst}{
+%      SelectCharTable=\lst@ReplaceInput{\^\^I}{\lst@ProcessTabulator}
+%    }^^A
+%    \leavevmode 
+%      \input{\jobname.tmp}^^A
+%  \endgroup
+%  \MakePercentIgnore
+%}
+%\LaTeXdemo@new{code and example}{^^A
+%  \setbox\LaTeXdemo@box=\hbox\bgroup
+%    \lst@BeginAlsoWriteFile{\jobname.tmp}^^A
+%    \LaTeXdemo@common
+%}{^^A
+%    \lst@EndWriteFile
+%  \egroup
+%  \begin{center}
+%    \ifdim\wd\LaTeXdemo@box>0.48\linewidth\relax
+%      \hbox to\linewidth{\box\LaTeXdemo@box\hss}^^A
+%        \begin{minipage}{\linewidth}
+%          \LaTeXdemo@input
+%        \end{minipage}
+%    \else
+%      \begin{minipage}{0.48\linewidth}
+%        \LaTeXdemo@input
+%      \end{minipage}
+%      \hfill
+%      \begin{minipage}{0.48\linewidth}
+%        \hbox to\linewidth{\box\LaTeXdemo@box\hss}^^A
+%      \end{minipage}
+%    \fi
+%  \end{center}
+%}
+%\LaTeXdemo@new{code only}{^^A
+%  \LaTeXdemo@common
+%}{^^A
+%}
+%
+%\providecommand*{\eTeX}{\ensuremath{\varepsilon}-\TeX}
+%\providecommand*{\file}{\texttt}
+%\providecommand*{\opt}{\texttt}
+%\providecommand*{\pkg}{\textsf}
+%
+%\makeatother
+%
+%\title{^^A
+%  \textsf{rsc} --- \texorpdfstring{\BibTeX}{BibTeX} styles for
+%    Royal Society of Chemistry and Wiley journals\thanks{^^A
+%    This file describes version \fileversion, last revised 
+%    \filedate.^^A
+%  }^^A
+%}
+%\author{^^A
+%  Joseph Wright\thanks{E-mail: joseph.wright@morningstar2.co.uk}^^A
+%}
 %\date{Released \filedate}
 %
 %\maketitle
 %
+%\changes{v1.0}{2006/11/08}{Initial release of packaged 
+%  \texttt{rsc.bst}}
+%\changes{v2.0}{2007/07/21}{First re-write of package}
+%\changes{v3.0}{2008/07/20}{Second re-write of package}
+%\changes{v3.1}{2009/04/24}{\textsf{mciteplus} package optional}
+%\changes{v3.1}{2009/04/24}{Demonstration file included}
+%
 %\begin{abstract}
-% The \currpkg package provides \BibTeX\ style files to produce
+% The \pkg{rsc} package provides \BibTeX\ style files to produce
 % bibliographies in accordance with the guidelines of the Royal
 % Society of Chemistry and Wiley chemistry-related journals. The
-% styles require the use of \pkg{natbib} and \pkg{mciteplus}.  In
-% addition, a short \LaTeX\ package is included; this provides a
-% convenient user interface to the customisation hooks made available
-% by the \BibTeX\ styles.
+% styles require the use of \pkg{natbib}.  In addition, a short 
+% \LaTeX\ package is included; this provides a convenient user 
+% interface to the customisation hooks made available by the 
+% \BibTeX\ styles.
 %\end{abstract}
 %
 %\begin{multicols}{2}
@@ -207,36 +273,54 @@ BibTeX styles.
 % the preparation of journal articles, it would be nice to be able to
 % use it for reports.  The package \pkg{achemso} provides for a
 % \BibTeX\ style and other support for reports in the style of the
-% American Chemical Society.  The aim of the \currpkg package is to
+% American Chemical Society.  The aim of the \pkg{rsc} package is to
 % provide similar support for the style favoured by the Royal Society
 % of Chemistry.  The package also provides support for the style used
 % in Wiley-published journals.
 %
-% As of version 3, this bundle requires the use of \pkg{natbib} and
-% \pkg{mciteplus}.  These two packages make creating bibliographies
-% much easier for chemists.  As both require correctly-designed
-% \BibTeX\ styles, providing versions supporting different combinations
-% had become error-prone and confusing.
+% As of version 3, this bundle requires \pkg{natbib}; the package
+% \pkg{mciteplus} is also supported but not required.  These two 
+% packages make creating bibliographies much easier for chemists.  
+% 
+%\section{Installation}
+%
+% The entire bundle is supplied with the TDS-ready ZIP file,
+% \file{rsc.tds.zip}.  Simply unzip this into your local texmf
+% tree and run your hash program (\texttt{texhash} for \TeX{}Live or
+% \texttt{initextmf -u} for MiK\TeX).
+%
+% To extract the bundle of files from \file{rsc.dtx}, run 
+% (pdf)\TeX\ on \file{rsc.dtx}. This will produce all of the package
+% files, and also \file{README.txt}.  To extract the
+% files and build the documentation, run (pdf)\LaTeX\ on 
+% \texttt{rsc.dtx}.  The files can then be installed as above.
 %
 %\section{Using the styles}
+%
 % The styles are used in the normal way for \BibTeX\ styles, as the
-% argument to the \cs{bibliographystyle} macro.  As both \pkg{natbib}
-% and \pkg{mciteplus} are required, these must of course be loaded.
-% Citations can then be given as normal:
-%\begin{LaTeXexample}
+% argument to the \cs{bibliographystyle} macro.  As \pkg{natbib}
+% is required, it must of course be loaded. Citations can then be 
+% given as normal:
+%\begin{LaTeXdemo}
 %  Some standard citations
-%    \cite{Abernethy2003,Cotton1999}.\\
-%  A multiple citation
-%    \cite{Arduengo1992,*Arduengo1994}.\\
+%    \cite{Abernethy2003,Cotton1999}.
 %  Some \textsf{natbib}-specific features:
 %    \citet{Abernethy2003} have said something,
 %    as reported by \citeauthor{Cotton1999},
-%    in \citeyear{Arduengo1992}.
-%\end{LaTeXexample}
+%    in \citeyear{Abernethy2003}.
+%\end{LaTeXdemo}
+%
+% If the \pkg{mciteplus} package is available, multiple citations can
+% be combined into a single list:
+%\begin{LaTeXdemo}
+%  A multiple citation
+%    \cite{Arduengo1992,*Arduengo1994}.\\
+%\end{LaTeXdemo}
+%
 % To make life slightly easier for the user, a small \LaTeX\ package
 % accompanies the \BibTeX\ files.  It automatically loads the support
 % packages, and handles customisation (see the next section).
-%\begin{LaTeXexample}[noexample]
+%\begin{LaTeXdemo}[code only]
 %  \documentclass{article}
 %  \usepackage{rsc}
 %  \begin{document}
@@ -244,10 +328,10 @@ BibTeX styles.
 %  \bibliographystyle{rsc} % or angew
 %  \bibliography{your-bibtex-database}
 %  \end{document}
-%\end{LaTeXexample}
+%\end{LaTeXdemo}
 %
-%\section{Customising the styles: the \texorpdfstring{\LaTeX}{LaTeX}
-%  package}
+%\section{Customising the styles: the 
+%  \texorpdfstring{\LaTeX}{LaTeX} package}
 % Both of the styles provide a small number of control hooks to
 % modify the output behaviour.  These can be altered directly, using
 % a mechanism similar to that used by \pkg{IEEEtrans}.  However, for
@@ -280,25 +364,25 @@ BibTeX styles.
 % \emph{after} punctuation even if given before in the text.  This
 % documentation has been compiled using \pkg{natmove}: see the input
 % of the example citations in the previous section.
+% 
+%\section{Demonstration file}
 %
-%\bibliographystyle{rsc}
-%\StopEventually{%
+% This bundle includes the demonstration file \file{rsc-demo.tex}. The
+% file shows how to create a submission to the RSC, using only standard
+% \LaTeX\ tools. Note that the demonstration does \emph{not} aim to look
+% like a published paper: this is not required for submission. The
+% demonstration file should be installed in the \file{doc/latex/rsc}
+% directory.
+%  
+%\StopEventually{^^A
+%  \bibliographystyle{rsc}
 %  \PrintChanges
 %  \PrintIndex
-%  \bibliography{rsc}}
+%  \bibliography{rsc}
+%}
 %
-%\iffalse
-%<*package>
-%\fi
+%\section{Implementation}
 %
-%\section{The \texorpdfstring{\LaTeX}{LaTeX} source}
-% The package starts with the usual identification.
-%    \begin{macrocode}
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{rsc}
-  [2008/08/27 v3.0 Support for RSC and Wiley journals]
-\RequirePackage{mciteplus,kvoptions}
-%    \end{macrocode}
 %\begin{macro}{\ifrsc@super}
 %\begin{macro}{\ifrsc@usetitle}
 %\begin{macro}{\ifrsc@usedoi}
@@ -307,106 +391,384 @@ BibTeX styles.
 % bibliography are converted into \LaTeX\ package options using
 % \pkg{kvoptions}.
 %    \begin{macrocode}
+%<*package>
+\RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family = rsc,
-  prefix = rsc@}
+  prefix = rsc@
+}
 \DeclareBoolOption{super}
 \DeclareBoolOption{usetitle}
 \DeclareBoolOption{usedoi}
 \DeclareStringOption{maxauthors}
 \setkeys{rsc}{
   maxauthors = 0,
-  usetitle = false,
-  usedoi = false,
-  super = true}
+  usetitle   = false,
+  usedoi     = false,
+  super      = true
+}
 \ProcessKeyvalOptions{rsc}
 %    \end{macrocode}
 %\end{macro}
 %\end{macro}
 %\end{macro}
 %\end{macro}
-%\begin{macro}{\rsc@prefix}
-%\begin{macro}{\rsc@msg}
-% Some set up work is carried out for writing to the control
-% bibliography.
-%    \begin{macrocode}
-\newcommand*{\rsc@prefix}{rsc-}
-\edef\rsc@msg{%
-  This is an auxiliary file used by the `rsc' package.^^J%
-  This file may safely be deleted. It will be recreated as
-  required.^^J}
-%    \end{macrocode}
-%\end{macro}
-%\end{macro}
-%\begin{macro}{\rsc@out}
-%\begin{macro}{\rsc@stream}
-% Assuming files are being written, the control values are placed in
-% the control \BibTeX\ database.
-%    \begin{macrocode}
-\if@filesw
-  \newwrite\rsc@out
-  \newcommand*\rsc@stream{\rsc@prefix\jobname.bib}%
-  \immediate\openout\rsc@out\rsc@stream\relax
-  \immediate\write\rsc@out{\rsc@msg}%
-  \edef\@tempa#1#2{\space\space#1\space=\space"#2",^^J}%
-  \immediate\write\rsc@out{%
-    @Control\string{rsc-control,^^J%
-    \@tempa{ctrl-use-title}{\ifrsc@usetitle yes\else no\fi}%
-    \@tempa{ctrl-etal-number}{\rsc@maxauthors}%
-    \@tempa{ctrl-use-doi-all}{\ifrsc@usedoi yes\else no\fi}%
-    \string}^^J}%
-\fi
-%    \end{macrocode}
-%\end{macro}
-%\end{macro}
-%\begin{macro}{\rsc@bibliography}
-%\begin{macro}{\bibliography}
-% Finally, the control database and a suitable citation are added to
-% the document body.  The citation has to come right at the end of
-% the \cs{document} macro.
-%    \begin{macrocode}
-\AtBeginDocument{
-  \let\rsc@bibliography\bibliography
-  \renewcommand*{\bibliography}[1]{%
-    \rsc@bibliography{\rsc@prefix\jobname,#1}}}
-\g@addto@macro{\document}{%
-  \if@filesw
-    \immediate\write\@auxout{%
-      \string\citation\string{rsc-control\string}}%
-  \fi}
-%    \end{macrocode}
-%\end{macro}
-%\end{macro}
+%
 % Citation support is loaded.
 %    \begin{macrocode}
 \ifrsc@super
   \RequirePackage[sort&compress,numbers,super]{natbib}
-  \IfFileExists{natmove.sty}
-    {\RequirePackage{natmove}}
-    {}
+  \IfFileExists{natmove.sty}{%
+    \RequirePackage{natmove}}{}
 \else
   \RequirePackage[sort&compress,numbers]{natbib}
 \fi
 %    \end{macrocode}
 %
-%\iffalse
-%</package>
-%<*bib>
-%\fi
-%\section{The \texorpdfstring{\BibTeX}{BibTeX} source}
-% Very little of the \BibTeX\ source is very exciting, with
-% most of it taken from the standard classes, the \pkg{natbib} and
-% \pkg{mciteplus} classes or \emph{Tame the BeaST}.
+%\begin{macro}{\rsc@bib@file}
+%\begin{macro}{\rsc@bib@message}
+%\begin{macro}{\rsc@bib@name}
+% Some information or creating the control file for \BibTeX\ is set up.
 %    \begin{macrocode}
+\newwrite\rsc@bib@file
+\newcommand*{\rsc@bib@message}{%
+  This is an auxiliary file used by the `rsc' package.^^J%
+  This file may safely be deleted. It will be recreated as
+  required.^^J
+}
+\newcommand*{\rsc@bib@name}{rsc-\jobname.bib}
+%    \end{macrocode}
+%\end{macro}
+%\end{macro}
+%\end{macro}
+%\begin{macro}{\rsc@bib@write}
+%\begin{macro}{\rsc@bib@write@aux}
+% The control information for \BibTeX\ needs to be written to a special
+% file. The main writing macro is quite simple. Actually writing the
+% information is left to the code for \cs{bibliography}, so that this
+% only happens if needed.
+%    \begin{macrocode}
+\newcommand*{\rsc@bib@write}{%
+  \if@filesw
+    \expandafter\rsc@bib@write@aux
+  \fi
+}
+\newcommand*{\rsc@bib@write@aux}{%
+  \immediate\openout\rsc@bib@file\rsc@bib@name\relax
+  \immediate\write\rsc@bib@file{\rsc@bib@message}%
+  \edef\@tempa##1##2{%
+    \space\space##1\space = \space"##2",^^J%
+  }%
+  \immediate\write\rsc@bib@file{%
+    @Control\string{%
+      rsc-control,^^J%
+      \@tempa{ctrl-use-title}{%
+        \ifrsc@usetitle yes\else no\fi
+      }%
+      \@tempa{ctrl-use-doi-all}{%
+        \ifrsc@usedoi yes\else no\fi
+      }%
+      \@tempa{ctrl-etal-number}{\rsc@maxauthors}%
+    \string}^^J%
+  }%
+  \immediate\write\@auxout{%
+    \string\citation\string{rsc-control\string}%
+  }%
+  \AtEndDocument{%
+    \immediate\closeout\rsc@bib@file\relax
+  }%
+  \let\rsc@bib@write\relax
+}
+%    \end{macrocode}
+%\end{macro}
+%\end{macro}
+%
+% The \pkg{mciteplus} package allows the construction of lists of
+% references with sub-letters. However, it might not be available, and
+% so it is only loaded if available: the \file{.bst} files should work
+% either way.
+%    \begin{macrocode}
+\IfFileExists{mciteplus.sty}{%
+  \RequirePackage{mciteplus}
+}{}
+%    \end{macrocode}
+%
+%\begin{macro}{\rsc@bibliography}
+%\begin{macro}{\bibliography}
+% The \cs{bibliography} macro is now patched so that everything works
+% correctly. There are two things to do, the patch itself and a citation
+% for the control file.
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \let\rsc@bibliography\bibliography
+  \renewcommand*{\bibliography}[1]{%
+    \rsc@bib@write
+    \rsc@bibliography{rsc-\jobname,#1}%
+  }%
+}
+%</package>
+%    \end{macrocode}
+%\end{macro}
+%\end{macro}
+% 
+%\Finale
+%
+%\iffalse
+%<*demo>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a (brief) model paper for submission to the RSC using
+%% standard LaTeX packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A few core packages which are really essential
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc} % Modern font encoding
+\usepackage{float}       % For creating charts, graphs and schemes
+\usepackage{helvet}      % Helvetica font for sans serif
+\usepackage{mathptmx}    % Times font ("Word-like")
+\usepackage{rsc}         % Loads natbib, etc.
+\usepackage{setspace}    % For double-spacing 
+\AtBeginDocument{\doublespacing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% New floats are created for standard chemistry graphics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newfloat{chart}{htbp}{loc}
+\newfloat{graph}{htbp}{loh}
+\newfloat{scheme}{htbp}{los}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional packages needed here.  Only include packages
+%% which are essential, to avoid problems later.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If issues arise when submitting your manuscript, you may want to
+%% un-comment the next line.  This provides information on the
+%% version of every file you have used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\listfiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional macros here.  Please use \newcommand* where
+%% possible, and avoid layout-changing macros (which are not used
+%% when typesetting).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\mycommand}[1]{\texttt{\emph{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Give details for all authors here, using the standard LaTeX 
+%% method.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{%
+  Andrew N. Other\thanks{%
+    Department of Chemistry, Unknown University, Unknown Town%
+  }%
+  \and
+  I. Ken Groupleader\thanks{%
+    Department of Chemistry, Unknown University, Unknown Town,
+    E-mail: \texttt{i.k.groupleader@unknown.uu}
+  }%
+  \and
+  Susanne K. Laborator\thanks{%
+    Lead Discovery, BigPharma, Big Town, USA
+  }%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The document title should be given as usual
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{A demonstration for submission to the RSC}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Make a title, of course
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+\begin{abstract}
+  This is an example document for writing a submission to the
+  Royal Society of Chemistry. It does not seek to reproduce the
+  layout of a published paper, but instead shows how the standard
+  \LaTeX\ tools can be used to create a manuscript.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start the main part of the manuscript here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+This is a paragraph of text to fill the introduction of the
+demonstration file.  
+
+\section{Results and discussion}
+
+\subsection{Outline}
+
+The document layout should follow the style of the journal concerned.
+Consult the appropriate Instructions for Authors to see what is 
+required. Some journals, for example, do not allow sections in
+articles.
+
+\subsection{References}
+
+The rsc bibliography style requires the \textsf{natbib} package,
+which is loaded automatically by the \textsf{rsc} package.
+References can be made using the normal method; if the
+\textsf{natmove} package is available, citations can be placed 
+before any punctuation, and they will be moved as necessary 
+\cite{Mena2000,Abernethy2003}. The \textsf{natmove} package is
+part of the \textsf{achemso} bundle. 
+
+The use of \textsf{natbib} allows the use of the various citation
+commands of that package: \citeauthor{Abernethy2003} have shown
+something, in \citeyear{Cotton1999}, or as given by
+Ref.~\citenum{Mena2000}. If you encounter problems with the 
+citation macros, please check that your copy of \textsf{natbib} 
+is up to date.
+
+Multiple citations to be combined into a list can be given as
+a single citation.  This uses the \textsf{mciteplus} package
+\cite{Arduengo1992,*Eisenstein2005,*Arduengo1994}.  Citations
+other than the first of the list should be indicated with a star.
+If the \textsf{mciteplus} package is not installed, the standard
+bibliography tools will still work but starred references will be
+ignored.
+
+\subsection{Floats}
+
+Setting up new float types is demonstrated in the premable, where
+charts, graphs and schemes are defined.  As illustrated, the float 
+is ``here'' if possible (Scheme~\ref{sch:example}).
+\begin{scheme}
+  \centering
+  Your scheme graphic would go here: \texttt{.eps} format\\
+  for \LaTeX\, or \texttt{.pdf} (or \texttt{.png}) for pdf\LaTeX\\
+  \textsc{ChemDraw} files are best saved as \texttt{.eps} files;\\
+  these can be scaled without loss of quality, and can be\\
+  converted to \texttt{.pdf} files easily using \texttt{eps2pdf}.\\
+  %\includegraphics{graphic}
+  \caption{An example scheme}
+  \label{sch:example}
+\end{scheme}
+
+\begin{figure}
+  \centering
+  As well as the standard float types \texttt{table}\\
+  and \texttt{figure}, the premable defines\\
+  \texttt{scheme}, \texttt{chart} and \texttt{graph}.
+  \caption{An example figure}
+  \label{fgr:example}
+\end{figure}
+
+Charts, figures and schemes do not necessarily have to be labelled or
+captioned.  However, tables should always have a title. It is
+possible to include a number and label for a graphic without any
+title, using an empty argument to the \texttt{\textbackslash caption}
+macro.
+
+The use of the different floating environments is not required, but
+it is intended to make document preparation easier for authors. In
+general, you should place your graphics where they make logical
+sense; the production process will move them if needed.
+
+\subsection{Math(s)}
+
+This file does not load any particular additional support for 
+mathematics.  If the author \emph{needs} things like 
+\textsf{amsmath}, they should be loaded in the preamble.  However,
+the basics should work fine.  Some inline material $ y = mx + c$
+followed by some display. \[ A = \pi r^2 \]
+
+It is possible to label equations in the usual way.
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}x} r^2 = 2r
+\end{equation}
+This can also be used to have equations containing graphical
+content.
+\begin{equation}
+  \textrm{Some content}
+  %\includegraphics{graphic}
+  \label{eqn:graphic}
+\end{equation}
+
+\section{Experimental}
+
+The usual experimental details should appear here.  This could
+include a table, which can be referenced as Table~\ref{tbl:example}. 
+Do not worry about the appearance of the table: this will be altered 
+during production.
+\begin{table}
+  \centering
+  \caption{An example table}
+  \label{tbl:example}
+  \begin{tabular}{ll}
+    \hline
+    Header one & Header two \\
+    \hline
+    Entry one & Entry two \\
+    Entry three & Entry four \\
+    Entry five & Entry five \\
+    Entry seven & Entry eight \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Adding notes to tables can be complicated.  Perhaps the easiest
+method is to generate these using the basic
+\texttt{\textbackslash textsuperscript} and
+\texttt{\textbackslash emph} macros, as illustrated
+(\ref{tbl:notes}).
+\begin{table}
+  \caption{A table with notes}
+  \label{tbl:notes}
+  \begin{tabular}{ll}
+    \hline
+    Header one & Header two \\
+    \hline
+    Entry one\textsuperscript{\emph{a}}
+      & Entry two \\
+    Entry three\textsuperscript{\emph{b}}
+      & Entry four \\
+  \hline
+  \end{tabular}
+
+  \textsuperscript{\emph{a}} Some text;
+  \textsuperscript{\emph{b}} Some more text.
+\end{table}
+
+The example file also loads the \textsf{mhchem} package, so
+that formulas are easy to input: \texttt{\textbackslash
+\ce\{H2SO4\}} gives \ce{H2SO4}.  See the use in the
+bibliography file (when using titles in the references
+section).
+
+The use of new commands should be limited to simple things which will
+not interfere with the production process.  For example,
+\texttt{\textbackslash mycommand} has been defined in this example,
+to give italic, monospaced text: \mycommand{some text}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The appropriate \bibliographystyle and \bibliography commands
+%% should be placed here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{rsc}
+\bibliography{rsc}
+
+\end{document}
+%</demo>
+%<*bst>
 ENTRY
   { address
     author
     booktitle
     chapter
-%    \end{macrocode}
-% The next three entries are used to allow formatting control, in
-% the style of \pkg{biblatex}.
-%    \begin{macrocode}
     ctrl-use-title
     ctrl-etal-number
     ctrl-use-doi-all
@@ -448,27 +810,17 @@ FUNCTION {init.state.consts}
   #4 'after.item :=
 }
 
-%    \end{macrocode}
-% Using a trick from \pkg{biblatex}, some integers are made available
-% to control some formatting aspects without needing a new style.
-%    \begin{macrocode}
 INTEGERS { is.use.title etal.number use.doi.all }
 
-%    \end{macrocode}
-% A simple Boolean switch for controlling title output.
-%    \begin{macrocode}
+%% #0 turns off the display of the title for articles
+%% #1 enables
 FUNCTION {default.is.use.title} { #0 }
 
-%    \end{macrocode}
-% The number of names that force ``\emph{et al.}'' to be used
-%If set to 0, all names are displayed
-%    \begin{macrocode}
+%% The number of names that force "et al." to be used
 FUNCTION {default.etal.number} { #0 }
 
-%    \end{macrocode}
-% A simple Boolean switch for controlling DOI printing for normal
-% entries.
-%    \begin{macrocode}
+%% #0 turns off the display of the DOI for articles
+%% #1 enables
 FUNCTION {default.use.doi.all} { #0 }
 
 FUNCTION {add.comma}
@@ -516,9 +868,6 @@ FUNCTION {output.check}
   if$
 }
 
-%    \end{macrocode}
-% Some functions taken more or less verbatim from \pkg{mciteplus}.
-%    \begin{macrocode}
 INTEGERS { would.add.period.textlen }
 
 FUNCTION {would.add.period}
@@ -600,10 +949,6 @@ FUNCTION {paren}
   if$
 }
 
-%    \end{macrocode}
-% Using independent strings makes editing easier.  Here, a number of
-% variations between the RSC and Wiley styles show up.
-%    \begin{macrocode}
 FUNCTION {bbl.and}
 { "and" }
 
@@ -708,9 +1053,6 @@ FUNCTION {eng.ord}
    if$
 }
 
-%    \end{macrocode}
-% A search and replace system taken from \emph{Tame the BeaST}.
-%    \begin{macrocode}
 INTEGERS{ l }
 
 FUNCTION{string.length}
@@ -744,9 +1086,6 @@ FUNCTION{find.replace}
   while$
 }
 
-%    \end{macrocode}
-% Also some checks on whether a ``string'' is really a number.
-%    \begin{macrocode}
 FUNCTION {chr.to.value}
 { chr.to.int$ #48 -
   duplicate$ duplicate$
@@ -859,10 +1198,6 @@ FUNCTION {format.names}
   #1 'nameptr :=
   s num.names$ 'numnames :=
   numnames 'namesleft :=
-%    \end{macrocode}
-% Names are truncated if there are more than |etal.number|, and it is
-% not set to zero.
-%    \begin{macrocode}
   numnames etal.number > etal.number #0 > and
     { s #1 "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
       t bbl.etal space.connect
@@ -903,11 +1238,6 @@ FUNCTION {format.authors}
   if$
 }
 
-%    \end{macrocode}
-% The |strip.comma| function is used to ``unwind'' the comma added by
-% |output.nonnull|, so that editors in brackets are easy to do.  This
-% is needed for the Wiley style.
-%    \begin{macrocode}
 FUNCTION {strip.comma}
 { duplicate$
   string.length 'find_length :=
@@ -949,20 +1279,10 @@ FUNCTION {format.doi}
   if$
 }
 
-%    \end{macrocode}
-% |n.separate| is given in the \pkg{custom-bib} package.  The
-% following function is modified to separate out a number of any
-% length into digit groups, \eg~12345 turns into 12\,345, 1234567 in
-% 1\,234\,567 but 1234 or a12345 are left alone.
-%    \begin{macrocode}
 FUNCTION {n.separate.multi}
 { 't :=
   ""
   #0 'numnames :=
-%    \end{macrocode}
-% This is the key line: the test is that the sting is both
-% at least 5 digits long and is an integer.
-%    \begin{macrocode}
   t text.length$ #4 > t is.a.number and
     {
       { t empty$ not }
@@ -1341,10 +1661,6 @@ FUNCTION {format.thesis.type}
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
-%    \end{macrocode}
-% To allow titles to appear in article citations without needing a
-% separate \BibTeX\ style file.
-%    \begin{macrocode}
   is.use.title
     { title format.title.noemph "title" output.check }
     'skip$
@@ -1623,11 +1939,6 @@ FUNCTION {unpublished}
   empty.doi.note
 }
 
-%    \end{macrocode}
-% Using the same mechanism as in \pkg{biblatex}, control of output
-% can be achieved using a special entry type. The auxiliary macros
-% come from \pkg{biblatex} and \emph{Tame the BeaST}.
-%    \begin{macrocode}
 INTEGERS { a b }
 
 FUNCTION {mult}
@@ -1733,9 +2044,6 @@ MACRO {dec} {"December"}
 
 READ
 
-%    \end{macrocode}
-% Set up the special control entries.
-%    \begin{macrocode}
 FUNCTION {initialize.controls}
 { default.is.use.title 'is.use.title :=
   default.etal.number 'etal.number :=
@@ -1899,22 +2207,33 @@ FUNCTION {begin.bib}
     'skip$
     { preamble$ write$ newline$ }
   if$
-  "\ifx\mcitethebibliography\mciteundefinedmacro"
+  "\providecommand*{\mcitethebibliography}{\thebibliography}"
   write$ newline$
-  "  \PackageError"
-%<rsc>  "{rsc.bst}"
-%<angew>  "{angew.bst}"
-  "{mciteplus.sty has not been loaded}" * *
+  "\csname @ifundefined\endcsname{endmcitethebibliography}"
   write$ newline$
-  "  {This bibstyle requires the use of the"
-  " mciteplus package.}" *
+  "{\let\endmcitethebibliography\endthebibliography}{}"
   write$ newline$
-  "\fi"
+  "\begin{mcitethebibliography}{"  number.label int.to.str$  * "}" *
   write$ newline$
-  "\begin{mcitethebibliography}{"
-  number.label int.to.str$  * "}" *
+  "\providecommand*{\natexlab}[1]{#1}"
   write$ newline$
-  "\providecommand{\natexlab}[1]{#1}"
+  "\providecommand*{\mciteSetBstSublistMode}[1]{}"
+  write$ newline$  
+  "\providecommand*{\mciteSetBstMaxWidthForm}[2]{}"
+  write$ newline$
+  "\providecommand*{\mciteBstWouldAddEndPuncttrue}"
+  write$ newline$      
+  "  {\def\EndOfBibitem{\unskip.}}"
+  write$ newline$   
+  "\providecommand*{\mciteBstWouldAddEndPunctfalse}"
+  write$ newline$      
+  "  {\let\EndOfBibitem\relax}"
+  write$ newline$ 
+  "\providecommand*{\mciteSetBstMidEndSepPunct}[3]{}"
+  write$ newline$
+  "\providecommand*{\mciteSetBstSublistLabelBeginEnd}[3]{}"
+  write$ newline$
+  "\providecommand*{\EndOfBibitem}{}"
   write$ newline$
   "\mciteSetBstSublistMode{f}"
   write$ newline$
@@ -1923,9 +2242,7 @@ FUNCTION {begin.bib}
 %<rsc>  "{(\emph{\alph{mcitesubitemcount}})}"
 %<angew>  "{\alph{mcitesubitemcount})}"
   write$ newline$
-  "\mciteSetBstSublistLabelBeginEnd"
-  write$ newline$
-  "{\mcitemaxwidthsubitemform\space}"
+  "\mciteSetBstSublistLabelBeginEnd{\mcitemaxwidthsubitemform\space}"
   write$ newline$
   "{\relax}{\relax}"
   write$ newline$
@@ -1943,14 +2260,8 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
-%    \end{macrocode}
-%\iffalse
-%</bib>
-%\fi
-%
-%\Finale
-%\iffalse
-%<*refs>
+%</bst>
+%<*bib>
 @ARTICLE{Abernethy2003,
   author = {Colin D. Abernethy and Gareth M. Codd and Mark D. Spicer
     and Michelle K. Taylor},
@@ -1963,6 +2274,10 @@ EXECUTE {end.bib}
   pages = {1128--1129},
   number = {5},
   doi = {10.1021/ja0276321},
+}
+
+@MISC{ACS2007,
+  url = {http://pubs.acs.org/books/references.shtml},
 }
 
 @ARTICLE{Arduengo1992,
@@ -1982,12 +2297,40 @@ EXECUTE {end.bib}
     Joseph C. Calabrese	and Fredric Davidson},
   title = {{L}ow-coordinate carbene complexes of nickel(0) and
     platinum(0)},
-  journal = jacsat,
+  journal = {{J}.~{A}m.\ {C}hem. {S}oc.},
   year = {1994},
   volume = {116},
   pages = {4391--4394},
   number = {10},
   doi = {10.1021/ja00089a029},
+}
+
+@ARTICLE{Eisenstein2005,
+  author = {Appelhans, Leah N. and Zuccaccia, Daniele and Kovacevic,
+    Anes and Chianese, Anthony R. and Miecznikowski, John R. and
+    Macchioni, Aleco and Clot, Eric and Eisenstein, Odile and
+    Crabtree, Robert H.},
+  title = {{A}n anion-dependent switch in selectivity results from a
+    change of {C}---{H} activation mechanism in the reaction of an
+    imidazolium salt with \ce{IrH5(PPh3)2}},
+  journal = {{J}.~{A}m.\ {C}hem. {S}oc.},
+  year = {2005},
+  volume = {127},
+  pages = {16299--16311},
+  number = {46},
+  doi = {10.1021/ja055317j},
+}
+
+@BOOK{Coghill2006,
+  title = {{T}he {ACS} {S}tyle {G}uide},
+  publisher = {{O}xford {U}niversity {P}ress, {I}nc. and
+               {T}he {A}merican {C}hemical {S}ociety},
+  year = {2006},
+  editor = {Coghill, Anne M. and Garson, Lorrin R.},
+  address = {{N}ew {Y}ork},
+  edition = {3},
+  subtitle = {{E}ffective {C}ommunication of {S}cientific
+    {I}nformation},
 }
 
 @BOOK{Cotton1999,
@@ -1999,181 +2342,18 @@ EXECUTE {end.bib}
   address = {Chichester},
   edition = {6},
 }
-%</refs>
-%<*jawltxdoc>
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{jawltxdoc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[final]{listings,graphicx,microtype}
-\usepackage[scaled=0.95]{helvet}
-\usepackage[version=3]{mhchem}
-\usepackage[osf]{mathpazo}
-\usepackage{booktabs,array,url,courier,xspace,varioref}
-\usepackage{upgreek,ifpdf,float,caption,longtable,babel}
-\begingroup
-  \@ifundefined{eTeXversion}
-    {\aftergroup\@gobble}
-    {\aftergroup\@firstofone}
-\endgroup
-  {\usepackage{etoolbox}}
-\floatstyle{plaintop}
-\restylefloat{table}
-\labelformat{figure}{\figurename~#1}
-\labelformat{table}{\tablename~#1}
-\ifpdf
-  \usepackage{embedfile}
-  \embedfile[%
-    stringmethod=escape,%
-    mimetype=plain/text,%
-    desc={LaTeX docstrip source archive for package `\jobname'}%
-    ]{\jobname.dtx}
-\fi
-\IfFileExists{\jobname.sty}
-  {\usepackage{\jobname}}{}
-\usepackage[numbered]{hypdoc}
-\setcounter{IndexColumns}{2}
-\newlength\LaTeXwidth
-\newlength\LaTeXoutdent
-\newlength\LaTeXgap
-\setlength\LaTeXgap{1em}
-\setlength\LaTeXoutdent{-0.15\textwidth}
-\newbox\lst@samplebox
-\edef\LaTeXexamplefile{\jobname.tmp}
-\lst@RequireAspects{writefile}
-\lstnewenvironment{LaTeXexample}[1][example]{%
-  \global\let\lst@intname\@empty
-  \ifcsname LaTeXcode#1\endcsname
-    \expandafter\let\expandafter\LaTeXcode
-      \csname LaTeXcode#1\endcsname
-    \expandafter\let\expandafter\LaTeXcodeend
-      \csname LaTeXcode#1end\endcsname
-  \else
-    \PackageError{jawltxdoc}
-      {Undefined example type `#1'}
-      \@ehd
-    \let\LaTeXcode\relax
-    \let\LaTeXcodeend\relax
-  \fi
-  \LaTeXcode}
-  {\lst@EndWriteFile
-   \LaTeXcodeend}
-\newcommand*{\LaTeXcodeexample}{%
-  \setbox\lst@samplebox=\hbox\bgroup
-  \LaTeXcodefloat}
-\let\LaTeXcoderesultonly\LaTeXcodeexample
-\newcommand*{\LaTeXcodeexampleend}{%
-  \egroup
-  \setlength\LaTeXwidth{\wd\lst@samplebox}%
-  \begin{list}{}{%
-    \setlength\itemindent{0pt}
-    \setlength\leftmargin\LaTeXoutdent
-    \setlength\rightmargin{0pt}}%
-    \item
-      \setlength\LaTeXoutdent{-0.15\textwidth}
-      \begin{minipage}[c]{%
-        \textwidth-\LaTeXwidth-\LaTeXoutdent-\LaTeXgap}
-        \LaTeXcodefloatend
-      \end{minipage}%
-      \hfill
-      \begin{minipage}[c]{\LaTeXwidth}%
-        \hbox to\linewidth{\box\lst@samplebox\hss}%
-      \end{minipage}%
-  \end{list}}
-\newcommand*{\LaTeXcodefloat}{%
-  \setkeys{lst}{tabsize=4,gobble=3,breakindent=0pt,
-    basicstyle=\small\ttfamily,basewidth=0.51em,
-    keywordstyle=\color{blue}}%
-  \lst@BeginAlsoWriteFile{\LaTeXexamplefile}}
-\let\LaTeXcodenoexample\LaTeXcodefloat
-\let\LaTeXcodenoexampleend\@empty
-\newcommand*{\LaTeXcodefloatend}{%
-  \MakePercentComment\catcode`\^^M=10\relax
-  \small
-  {\setkeys{lst}{SelectCharTable=\lst@ReplaceInput{\^\^I}%
-    {\lst@ProcessTabulator}}%
-    \leavevmode \input{\LaTeXexamplefile}}%
-  \MakePercentIgnore}
-\newcommand*{\LaTeXcoderesultonlyend}{\egroup\LaTeXcodefloatend}
-\lstnewenvironment{BibTeXexample}{%
-  \global\let\lst@intname\@empty
-  \setbox\lst@samplebox=\hbox\bgroup
-  \setkeys{lst}{tabsize=4,gobble=3,breakindent=0pt,
-    basicstyle=\small\ttfamily,basewidth=0.51em,
-    keywordstyle=\color{black}}
-  \lst@BeginAlsoWriteFile{\LaTeXexamplefile}}
- {\lst@EndWriteFile
-   \LaTeXcodeexampleend}
-\newcommand*{\DescribeOption}{%
-  \leavevmode\@bsphack\begingroup\MakePrivateLetters
-  \Describe@Option}
-\newcommand*{\Describe@Option}[1]{\endgroup
-              \marginpar{\raggedleft\PrintDescribeEnv{#1}}%
-              \SpecialOptionIndex{#1}\@esphack\ignorespaces}
-\newcommand*{\SpecialOptionIndex}[1]{\@bsphack
-    \index{#1\actualchar{\protect\ttfamily#1}
-           (option)\encapchar usage}%
-    \index{options:\levelchar#1\actualchar{\protect\ttfamily#1}%
-      \encapchar usage}\@esphack}
-\newcommand*{\indexopt}[1]{\DescribeOption{#1}\opt{#1}}
-\newcommand*{\DescribeOptionInfo}[2]{%
-  \DescribeOption{#1}%
-  \opt{#1=\meta{#2}}\xspace}
-\newcommand*{\ofixarg}[1]{%
-  {\ttfamily[}%
-  \ifmmode \expandafter \nfss@text \fi
-  {%
-    \meta@font@select
-    \edef\meta@hyphen@restore{%
-      \hyphenchar\the\font\the\hyphenchar\font}%
-    \hyphenchar\font\m@ne
-    \language\l@nohyphenation
-    #1\/%
-    \meta@hyphen@restore
-    }%
-    {\ttfamily]}}
-\newcommand*{\pkg}[1]{\textsf{#1}}
-\newcommand*{\currpkg}{\pkg{\jobname}\xspace}
-\newcommand*{\opt}[1]{\texttt{#1}}
-\newcommand*{\defaultopt}[1]{\opt{\textbf{#1}}}
-\newcommand*{\file}[1]{\texttt{#1}}
-\newcommand*{\ext}[1]{\file{.#1}}
-\newcommand*{\latin}[1]{\emph{#1}}
-\newcommand*{\etc}{%
-  \@ifnextchar.
-    {\latin{etc}}
-    {\latin{etc}.\xspace}}
-\newcommand*{\eg}{%
-  \@ifnextchar.
-    {\latin{e.g}}
-    {\latin{e.g}.\xspace}}
-\newcommand*{\ie}{%
-  \@ifnextchar.
-    {\latin{i.e}}
-    {\latin{i.e}.\xspace}}
-\newcommand*{\etal}{%
-  \@ifnextchar.
-    {\latin{et~al.}}
-    {\latin{et~al}.\xspace}}
-\newcommand*{\AMS}{{\protect\usefont{OMS}{cmsy}{m}{n}%
-  A\kern-.1667em\lower.5ex\hbox{M}\kern-.125emS}}
-\providecommand*{\eTeX}{\ensuremath{\varepsilon}-\TeX}
-\DeclareRobustCommand*{\XeTeX}
-  {X\kern-.125em\lower.5ex\hbox{\reflectbox{E}}\kern-.1667em\TeX}
-\providecommand*{\CTAN}{\textsc{ctan}}
-\@ifpackageloaded{etoolbox}
-  {\patchcmd{\@addmarginpar}
-    {\@latex@warning@no@line {Marginpar on page \thepage\space moved}}
-    {\relax}{}{}}
-  {}
-\newcounter{argument}
-\g@addto@macro\endmacro{\setcounter{argument}{0}}
-\newcommand*\darg[1]{%
-  \stepcounter{argument}%
-  {\ttfamily\char`\#\theargument~:~}#1\par\noindent\ignorespaces}
-\newcommand*\doarg[1]{%
-  \stepcounter{argument}%
-  {\ttfamily\makebox[0pt][r]{[}%
-   \char`\#\theargument]:~}#1\par\noindent\ignorespaces}
-%</jawltxdoc>
+
+@ARTICLE{Mena2000,
+  author = {Angel Abarca and Pilar G\'omez-Sal and Avelino Mart\'in
+    and Miguel Mena and Josep Mar\'ia Poblet and Carlos Y\'elamos},
+  title = {{A}mmonolysis of mono(pentamethylcyclopentadienyl)
+    titanium(\textsc{iv}) derivatives},
+  journal = {Inorg. Chem.},
+  year = {2000},
+  volume = {39},
+  pages = {642--651},
+  number = {4},
+  doi = {10.1021/ic9907718},
+}
+%</bib>
 %\fi
