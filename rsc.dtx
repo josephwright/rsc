@@ -69,7 +69,7 @@ This work consists of the file  rsc.dtx
 \generate{
   \file{\jobname.sty}{\from{\jobname.dtx}{package}}
 }
-\usedir{bibtex/bst/achemso}
+\usedir{bibtex/bst/rsc}
 \generate{
   \file{rsc.bst}{\from{\jobname.dtx}{bst,rsc}}
   \file{angew.bst}{\from{\jobname.dtx}{bst,angew}}
@@ -100,7 +100,7 @@ This work consists of the file  rsc.dtx
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{rsc}
-  [2009/04/24 v3.1 Support for RSC and Wiley journals]
+  [2009/05/06 v3.1a Support for RSC and Wiley journals]
 %</package>
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -119,7 +119,7 @@ This work consists of the file  rsc.dtx
 %</driver>
 % \fi
 %
-%\CheckSum{86}
+%\CheckSum{84}
 %
 %\GetFileInfo{\jobname.sty}
 %
@@ -453,6 +453,7 @@ This work consists of the file  rsc.dtx
     \expandafter\rsc@bib@write@aux
   \fi
 }
+\AtBeginDocument{\rsc@bib@write}
 \newcommand*{\rsc@bib@write@aux}{%
   \immediate\openout\rsc@bib@file\rsc@bib@name\relax
   \immediate\write\rsc@bib@file{\rsc@bib@message}%
@@ -477,7 +478,6 @@ This work consists of the file  rsc.dtx
   \AtEndDocument{%
     \immediate\closeout\rsc@bib@file\relax
   }%
-  \let\rsc@bib@write\relax
 }
 %    \end{macrocode}
 %\end{macro}
@@ -496,13 +496,11 @@ This work consists of the file  rsc.dtx
 %\begin{macro}{\rsc@bibliography}
 %\begin{macro}{\bibliography}
 % The \cs{bibliography} macro is now patched so that everything works
-% correctly. There are two things to do, the patch itself and a citation
-% for the control file.
+% correctly. 
 %    \begin{macrocode}
 \AtBeginDocument{%
   \let\rsc@bibliography\bibliography
   \renewcommand*{\bibliography}[1]{%
-    \rsc@bib@write
     \rsc@bibliography{rsc-\jobname,#1}%
   }%
 }
