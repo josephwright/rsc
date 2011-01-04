@@ -97,7 +97,7 @@ This work consists of the file  rsc.dtx
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{rsc}
-  [2011/01/04 v3.1d Support for RSC and Wiley journals]
+  [2011/01/04 v3.1e Support for RSC and Wiley journals]
 %</package>
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -247,9 +247,10 @@ This work consists of the file  rsc.dtx
 %  \texttt{rsc.bst}}
 %\changes{v2.0}{2007/07/21}{First re-write of package}
 %\changes{v3.0}{2008/07/20}{Second re-write of package}
-%\changes{v3.1}{2009/04/24}{\textsf{mciteplus} package optional}
+%\changes{v3.1}{2009/04/24}{\pkg{mciteplus} package optional}
 %\changes{v3.1}{2009/04/24}{Demonstration file included}
 %\changes{v3.1d}{2011/01/04}{New \opt{linkdoi} option}
+%\changes{v3.1e}{2011/01/05}{Option to skip loading \pkg{mciteplus}}
 %
 %\begin{abstract}
 % The \pkg{rsc} package provides \BibTeX\ style files to produce
@@ -366,6 +367,12 @@ This work consists of the file  rsc.dtx
 % documentation has been compiled using \pkg{natmove}: see the input
 % of the example citations in the previous section.
 % 
+%\DescribeOption{mciteplus}
+% The \pkg{rsc} package normally loads the support package
+% \pkg{mciteplus}. This can be controlled using the \opt{mciteplus}
+% option: loading \pkg{rsc} with \opt{mciteplus=false} will skip loading
+% \pkg{mciteplus}.
+% 
 %\section{Demonstration file}
 %
 % This bundle includes the demonstration file \file{rsc-demo.tex}. The
@@ -388,6 +395,7 @@ This work consists of the file  rsc.dtx
 %\begin{macro}{\ifrsc@usetitle}
 %\begin{macro}{\ifrsc@usedoi}
 %\begin{macro}{\ifrsc@linkdoi}
+%\begin{macro}{\ifrsc@mciteplus}
 %\begin{macro}{\rsc@maxauthors}
 % To make life easier for the user, the control values for the
 % bibliography are converted into \LaTeX\ package options using
@@ -400,12 +408,14 @@ This work consists of the file  rsc.dtx
   prefix = rsc@
 }
 \DeclareBoolOption{linkdoi}
+\DeclareBoolOption{mciteplus}
 \DeclareBoolOption{super}
 \DeclareBoolOption{usetitle}
 \DeclareBoolOption{usedoi}
 \DeclareStringOption{maxauthors}
 \setkeys{rsc}{
   linkdoi    = false,
+  mciteplus  = true,
   maxauthors = 0,
   usetitle   = false,
   usedoi     = false,
@@ -413,6 +423,7 @@ This work consists of the file  rsc.dtx
 }
 \ProcessKeyvalOptions{rsc}
 %    \end{macrocode}
+%\end{macro}
 %\end{macro}
 %\end{macro}
 %\end{macro}
@@ -497,7 +508,9 @@ This work consists of the file  rsc.dtx
 % either way.
 %    \begin{macrocode}
 \IfFileExists{mciteplus.sty}{%
-  \RequirePackage{mciteplus}
+  \ifrsc@mciteplus
+    \RequirePackage{mciteplus}
+  \fi  
 }{}
 %    \end{macrocode}
 %
