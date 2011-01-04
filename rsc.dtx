@@ -102,7 +102,8 @@ This work consists of the file  rsc.dtx
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
 \usepackage[T1]{fontenc}
-\usepackage{array,booktabs,lmodern,rsc}
+\usepackage{array,booktabs,lmodern}
+\usepackage[usedoi,linkdoi]{rsc}
 \usepackage[osf]{mathpazo}
 \usepackage[scaled=0.95]{helvet}
 \usepackage[final]{listings,microtype}
@@ -337,6 +338,7 @@ This work consists of the file  rsc.dtx
 %\DescribeOption{maxnames}
 %\DescribeOption{usetitle}
 %\DescribeOption{usedoi}
+%\DescribeOption{linkdoi}
 % The \opt{maxnames} option sets whether and when a long list of
 % authors is truncated, and takes an integer value.  Giving the value
 % \opt{0} means that no truncation occurs, otherwise the list is
@@ -349,7 +351,10 @@ This work consists of the file  rsc.dtx
 % option forces the use of \textsc{doi} information in cases where it
 % would not normally be present (for example journal articles with
 % page ranges available). This is intended to make it easier for
-% readers to find journal information.
+% readers to find journal information. The related
+% \opt{linkdoi} option will include a hyperlink for each \textsc{doi},
+% so that the \textsc{doi} can be clicked on to resolve the
+% original reference.
 %
 %\DescribeOption{super}
 % The \opt{super} Boolean option turns on superscript citations, and
@@ -381,6 +386,7 @@ This work consists of the file  rsc.dtx
 %\begin{macro}{\ifrsc@super}
 %\begin{macro}{\ifrsc@usetitle}
 %\begin{macro}{\ifrsc@usedoi}
+%\begin{macro}{\ifrsc@linkdoi}
 %\begin{macro}{\rsc@maxauthors}
 % To make life easier for the user, the control values for the
 % bibliography are converted into \LaTeX\ package options using
@@ -392,11 +398,13 @@ This work consists of the file  rsc.dtx
   family = rsc,
   prefix = rsc@
 }
+\DeclareBoolOption{linkdoi}
 \DeclareBoolOption{super}
 \DeclareBoolOption{usetitle}
 \DeclareBoolOption{usedoi}
 \DeclareStringOption{maxauthors}
 \setkeys{rsc}{
+  linkdoi    = false,
   maxauthors = 0,
   usetitle   = false,
   usedoi     = false,
@@ -404,6 +412,7 @@ This work consists of the file  rsc.dtx
 }
 \ProcessKeyvalOptions{rsc}
 %    \end{macrocode}
+%\end{macro}
 %\end{macro}
 %\end{macro}
 %\end{macro}
@@ -463,6 +472,9 @@ This work consists of the file  rsc.dtx
       }%
       \@tempa{ctrl-use-doi-all}{%
         \ifrsc@usedoi yes\else no\fi
+      }%
+      \@tempa{ctrl-link-doi}{%
+        \ifrsc@linkdoi yes\else no\fi
       }%
       \@tempa{ctrl-etal-number}{\rsc@maxauthors}%
     \string}^^J%
@@ -764,6 +776,7 @@ ENTRY
     chapter
     ctrl-use-title
     ctrl-etal-number
+    ctrl-link-doi
     ctrl-use-doi-all
     doi
     edition
@@ -803,7 +816,7 @@ FUNCTION {init.state.consts}
   #4 'after.item :=
 }
 
-INTEGERS { is.use.title etal.number use.doi.all }
+INTEGERS { is.use.title etal.number use.doi.all link.doi }
 
 %% #0 turns off the display of the title for articles
 %% #1 enables
@@ -815,6 +828,10 @@ FUNCTION {default.etal.number} { #0 }
 %% #0 turns off the display of the DOI for articles
 %% #1 enables
 FUNCTION {default.use.doi.all} { #0 }
+
+%% #0 turns off hyperlinks for DOI 
+%% #1 enables
+FUNCTION {default.link.doi} { #0 }
 
 FUNCTION {add.comma}
 { ", " * }
@@ -1265,7 +1282,19 @@ FUNCTION {format.doi}
 { use.doi.all
     { doi empty$
         'skip$
-        { bbl.doi doi tie.or.space.connect output }
+        { 
+          link.doi
+            {
+              "\href{http://dx.doi.org/"
+              doi *
+              "}{" *
+              bbl.doi doi tie.or.space.connect *
+              "}" *
+            }
+            { bbl.doi doi tie.or.space.connect }
+          if$
+          output 
+        }
       if$
     }
     'skip$
@@ -2010,6 +2039,13 @@ FUNCTION {Control}
       yes.no.to.int
       'use.doi.all := }
   if$
+  ctrl-link-doi
+  empty$
+    { skip$ }
+    { ctrl-link-doi
+      yes.no.to.int
+      'link.doi := }
+  if$
 }
 
 FUNCTION {conference} {inproceedings}
@@ -2037,6 +2073,7 @@ FUNCTION {initialize.controls}
 { default.is.use.title 'is.use.title :=
   default.etal.number 'etal.number :=
   default.use.doi.all 'use.doi.all :=
+  default.link.doi 'link.doi :=
 }
 
 INTEGERS { len }
