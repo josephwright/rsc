@@ -2272,7 +2272,9 @@ EXECUTE {initialize.longest.label}
 ITERATE {forward.pass}
 
 FUNCTION {begin.bib}
-{ preamble$ empty$
+{
+  "rsc 2016/08/22 v3.1f" top$
+  preamble$ empty$
     'skip$
     { preamble$ write$ newline$ }
   if$
