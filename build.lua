@@ -20,17 +20,14 @@ function setversion_update_line (line, date, version)
   if string.match(
     line, "^  %[%d%d%d%d/%d%d/%d%d v%d%.%d+%w? [^%]]*%]$"
   ) then
-    -- Skip the natmove version line, which is independent of achemso
-    if not string.match(line, "natbib") then
-      line = string.gsub(line, "%d%d%d%d/%d%d/%d%d", date)
-      line = string.gsub(line, "%d%.%d+%w?", version)
-    end
+    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d", date)
+    line = string.gsub(line, "%d%.%d+%w?", version)
   end
   -- BibTeX part
   if string.match(
-    line, "^  \"achemso %d%d%d%d/%d%d/%d%d v%d%.%d+%w?\" top%$$"
+    line, "^  \"rsc %d%d%d%d/%d%d/%d%d v%d%.%d+%w?\" top%$$"
   ) then
-    line = "  \"achemso " .. date .. " v" .. version .. "\" top$"
+    line = "  \"rsc " .. date .. " v" .. version .. "\" top$"
   end
   return line
 end
