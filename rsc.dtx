@@ -265,6 +265,8 @@ This work consists of the file  rsc.dtx
 %\changes{v3.1}{2009/04/24}{Demonstration file included}
 %\changes{v3.1d}{2011/01/04}{New \opt{linkdoi} option}
 %\changes{v3.1e}{2011/01/05}{Option to skip loading \pkg{mciteplus}}
+%\changes{v3.1f}{2016/08/22}{Include series in \texttt{incollection}
+%  entries for \pkg{rsc} bibliographies}
 %
 %\begin{abstract}
 % The \pkg{rsc} package provides \BibTeX\ style files to produce
@@ -1364,6 +1366,19 @@ FUNCTION {format.bvolume}
   if$
 }
 
+FUNCTION {format.cvolume}
+{ volume empty$
+    { "" }
+    {
+      bbl.volume volume tie.or.space.connect
+      series empty$
+        'skip$
+        { " of " * series * }
+      if$
+    }
+  if$
+}
+
 FUNCTION {format.title.noemph}
 { 't :=
   t empty$
@@ -1813,7 +1828,7 @@ FUNCTION {incollection}
   format.pub.address "publisher" output.check
   format.edition output
   format.bdate "year" output.check
-%<rsc>  format.bvolume output
+%<rsc>  format.cvolume output
   format.chapter.pages "chapter and pages" output.check
   format.doi
   fin.entry
